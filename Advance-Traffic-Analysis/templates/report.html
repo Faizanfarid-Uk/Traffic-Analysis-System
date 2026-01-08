@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Report Incident - TrafficFlow Pro{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>🚨 Report Traffic Incident</h1>
+    <form id="reportForm" style="margin: 2rem 0;">
+        <input type="number" id="lat" step="any" placeholder="Latitude (e.g., 37.7749)" required>
+        <input type="number" id="lng" step="any" placeholder="Longitude (e.g., -122.4194)" required>
+        <select id="severity" required>
+            <option value="1">Low (e.g., slow traffic)</option>
+            <option value="2">Medium (e.g., breakdown)</option>
+            <option value="3">High (e.g., accident)</option>
+        </select>
+        <textarea id="description" placeholder="Describe the incident..." rows="4" required></textarea>
+        <button type="submit">Submit Report</button>
+    </form>
+    <div id="status" style="margin-top: 1rem; padding: 0.5rem; border-radius: 6px; display: none;"></div>
+</div>
+
+<script>
+document.getElementById('reportForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const lat = parseFloat(document.getElementById('lat').value);
+    const lng = parseFloat(document.getElementById('lng').value);
+    const severity = parseInt(document.getElementById('severity').value);
+    const description = document.getElementById('description').value;
+
+    const res = await fetch('/api/incidents', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lat, lng, severity, description })
+    });
+
+    const data = await res.json();
+    const statusDiv = document.getElementById('status');
+    statusDiv.style.display = 'block';
+    
+    if (data.error) {
+        statusDiv.innerHTML = `<strong>❌ Error:</strong> ${data.error}`;
+        statusDiv.style.backgroundColor = '#fee2e2';
+        statusDiv.style.color = '#ef4444';
+    } else {
+        statusDiv.innerHTML = `<strong>✅ Success!</strong> Incident reported with ID: ${data.id}`;
+        statusDiv.style.backgroundColor = '#dcfce7';
+        statusDiv.style.color = '#16a34a';
+        document.getElementById('reportForm').reset();
+    }
+});
+</script>
+{% endblock %}

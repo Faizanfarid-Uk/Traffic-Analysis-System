@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Route Planner - TrafficFlow Pro{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>🛣️ Route Planner (Dijkstra Demo)</h1>
+    <p>Enter source and target nodes (e.g., A → C)</p>
+    
+    <form id="routeForm" style="margin: 2rem 0;">
+        <input type="text" id="source" placeholder="Source (e.g., A)" required>
+        <input type="text" id="target" placeholder="Target (e.g., C)" required>
+        <button type="submit">Calculate Shortest Path</button>
+    </form>
+
+    <div id="result" style="margin-top: 1.5rem; padding: 1rem; background: #f1f5f9; border-radius: 8px; display: none;"></div>
+</div>
+
+<script>
+document.getElementById('routeForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const source = document.getElementById('source').value;
+    const target = document.getElementById('target').value;
+    
+    const res = await fetch('/api/route', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source, target })
+    });
+    
+    const data = await res.json();
+    const resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'block';
+    
+    if (data.error) {
+        resultDiv.innerHTML = `<strong>Error:</strong> ${data.error}`;
+        resultDiv.style.color = 'var(--danger)';
+    } else {
+        resultDiv.innerHTML = `<strong>Shortest Distance:</strong> ${data.distance !== null ? data.distance : 'No route found'}`;
+        resultDiv.style.color = '#0f172a';
+    }
+});
+</script>
+{% endblock %}

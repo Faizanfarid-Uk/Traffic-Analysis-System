@@ -1,0 +1,10 @@
+id,lat,lng,severity,description,timestamp
+1,37.808,-122.479,2,"""Accident on Golden Gate Bridge southbound""",2025-10-24T02:43:57.896030
+2,37.7749,-122.4149,1,Inicident on Bridge,2025-10-24T02:51:12.428435
+3,37.71729,12477.3,2,"accident of a car
+",2025-10-24T06:08:30.984446
+4,37.717,43637.4,2,car accident,2025-10-25T13:18:55.754598
+5,378949.4,36364,1,accident of car ,2025-10-31T04:37:21.810795
+6,37.7347824,234.435456,1,there is no accident incident in my analysis time ,2025-12-14T15:50:44.934869
+7,3568799,98766,1,by 2 girls are sitting under the shadow tree,2025-12-18T19:00:16.766300
+8,3679095.5,4458.5,1,i have seen a bear shop,2025-12-26T18:25:54.257066

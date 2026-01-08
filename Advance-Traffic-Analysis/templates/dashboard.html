@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - TrafficFlow Pro{% endblock %}
+
+{% block content %}
+<h1>Live Traffic Incidents</h1>
+<p>Red = High Severity | Yellow = Medium/Low</p>
+<div id="map" style="height: 70vh; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); margin-top: 1rem;"></div>
+
+<script>
+function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: { lat: 37.7749, lng: -122.4194 },
+    });
+
+    fetch('/api/incidents')
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(incident => {
+                const marker = new google.maps.Marker({
+                    position: { lat: parseFloat(incident.lat), lng: parseFloat(incident.lng) },
+                    map: map,
+                    title: incident.description || 'Incident',
+                    icon: incident.severity > 2 ? 
+                        'http://maps.google.com/mapfiles/ms/icons/red-dot.png' : 
+                        'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png'
+                });
+            });
+        })
+        .catch(err => console.error('Failed to load incidents:', err));
+}
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">
+</script>
+{% endblock %}
