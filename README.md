@@ -11,7 +11,7 @@ While this project is primarily academic, it is structured in a modular and exte
 ![image_alt](https://github.com/Faizanfarid-Uk/Traffic-Analysis-System/blob/e6e560280683d27127abbfe05efadf1de2f88132/Screenshot_9-1-2026_23612_127.0.0.1.jpeg)
 ![image_alt](https://github.com/Faizanfarid-Uk/Traffic-Analysis-System/blob/46645e678a0b146407fb02f111cb8678be66373c/Screenshot_9-1-2026_23641_127.0.0.1.jpeg)
 ![image_alt](https://github.com/Faizanfarid-Uk/Traffic-Analysis-System/blob/bd0ed3f06bca607dfe186a0f2db496c944d5d69b/Screenshot_9-1-2026_23744_127.0.0.1.jpeg)
-![image_alt](https://github.com/Faizanfarid-Uk/Traffic-Analysis-System/blob/8daecf6de09380073d84e693802f4437d0979adb/Screenshot_9-1-2026_23744_127.0.0.1.jpeg)
+![image_alt](https://github.com/Faizanfarid-Uk/Traffic-Analysis-System/blob/fe1a31e6e3aa1c9649879b607b2ee44345bd1c2c/Screenshot_9-1-2026_23810_127.0.0.1.jpeg)
 ![image_alt]()
 ![image_alt]()
 ![image_alt]()
